@@ -49,6 +49,8 @@ class ModelTrainer:
 
         train_dataset = dataset_samsum_pt["train"].select(range(2000))
         eval_dataset = dataset_samsum_pt["validation"].select(range(100))
+        
+        os.environ["WANDB_MODE"] = "disabled"
 
         trainer = Trainer(
             model=model_,
