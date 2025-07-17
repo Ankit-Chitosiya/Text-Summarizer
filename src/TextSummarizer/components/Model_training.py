@@ -47,8 +47,8 @@ class ModelTrainer:
             gradient_accumulation_steps=16
         ) 
 
-        train_dataset = dataset_samsum_pt["train"].select(range(500))
-        eval_dataset = dataset_samsum_pt["validation"].select(range(50))
+        train_dataset = dataset_samsum_pt["train"].select(range(2000))
+        eval_dataset = dataset_samsum_pt["validation"].select(range(100))
 
         trainer = Trainer(
             model=model_,
