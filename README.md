@@ -33,6 +33,7 @@ conda activate summary
 
 ### STEP 02- install the requirements
 ```bash
+%cd Text-Summarizer
 pip install -r requirements.txt
 ```
 
