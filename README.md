@@ -23,7 +23,7 @@ https://github.com/Ankit-Chitosiya/Text-Summarizer.git
 ### STEP 01- Create a conda environment after opening the repository
 
 ```bash
-conda create -n summary python=3.8 -y
+conda create -n summary python=3.13.5 -y
 ```
 
 ```bash
