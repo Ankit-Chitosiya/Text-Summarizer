@@ -47,8 +47,8 @@ class ModelTrainer:
             gradient_accumulation_steps=16
         ) 
 
-        train_dataset = dataset_samsum_pt["train"].select(range(100))
-        eval_dataset = dataset_samsum_pt["validation"].select(range(20))
+        train_dataset = dataset_samsum_pt["train"].select(range(500))
+        eval_dataset = dataset_samsum_pt["validation"].select(range(50))
 
         trainer = Trainer(
             model=model_,
@@ -62,7 +62,8 @@ class ModelTrainer:
         
         trainer.train()
 
-        ## Save model
-        model_.save_pretrained(os.path.join(self.config.root_dir,"pegasus-samsum-model"))
-        ## Save tokenizer
-        tokenizer.save_pretrained(os.path.join(self.config.root_dir,"tokenizer"))
+        # After training, saving the model and tokenizer in artifacts
+        model_path = os.path.join(self.config.root_dir, "model")
+        model_.save_pretrained(model_path)
+        tokenizer_path = os.path.join(self.config.root_dir, "tokenizer")
+        tokenizer.save_pretrained(tokenizer_path)
