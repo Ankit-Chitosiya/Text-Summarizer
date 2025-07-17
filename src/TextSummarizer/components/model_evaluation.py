@@ -56,7 +56,7 @@ class ModelEvaluation:
     def evaluate(self):
         device = "cuda" if torch.cuda.is_available() else "cpu"
         tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_path)
-        model_pegasus = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path).to(device)
+        model = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path).to(device)
        
         #loading data 
         dataset_samsum_pt = load_from_disk(self.config.data_path)
@@ -67,7 +67,7 @@ class ModelEvaluation:
         rouge_metric = evaluate.load('rouge')
 
         score = self.calculate_metric_on_test_ds(
-        dataset_samsum_pt['test'][0:10], rouge_metric, model_pegasus, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary'
+        dataset_samsum_pt['test'][0:50],rouge_metric, model, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary'
             )
 
         rouge_dict = dict((rn, score[rn]) for rn in rouge_names)
