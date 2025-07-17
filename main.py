@@ -43,7 +43,6 @@ except Exception as e:
 
 
 STAGE_NAME = "Model Training stage"
-os.environ["WANDB_MODE"] = "disabled"
 try:
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
    model_trainer = ModelTrainerTrainingPipeline()
