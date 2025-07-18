@@ -39,6 +39,11 @@ pip install -r requirements.txt
 
 
 ```bash
+# Run this command to train the model
+python main.py
+```
+
+```bash
 # Finally run the following command
 python app.py
 ```
